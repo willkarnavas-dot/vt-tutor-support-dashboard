@@ -126,8 +126,8 @@
   </div>
   <div class="meta-block">
     <div class="date-label">YTD Reporting Period</div>
-    <div class="date-val">Jan 1 &ndash; Feb 26, 2026</div>
-    <div class="status-pill"><span class="dot"></span>56 DAYS &mdash; 25,193 CONVERSATIONS</div>
+    <div class="date-val">Jan 1 &ndash; Mar 1, 2026</div>
+    <div class="status-pill"><span class="dot"></span>59 DAYS &mdash; 26,328 CONVERSATIONS</div>
   </div>
 </header>
 
@@ -139,19 +139,19 @@
     <div class="range-slider-wrap">
       <div class="range-track"></div>
       <div class="range-fill" id="rangeFill"></div>
-      <input type="range" id="sliderStart" min="0" max="55" value="0" step="1" style="z-index:1">
-      <input type="range" id="sliderEnd"   min="0" max="55" value="55" step="1" class="r-end">
+      <input type="range" id="sliderStart" min="0" max="58" value="58" step="1" style="z-index:1">
+      <input type="range" id="sliderEnd"   min="0" max="58" value="58" step="1" class="r-end">
     </div>
     <span class="range-bound" id="lblEnd">Feb 18</span>
   </div>
   <div class="filter-presets">
-    <button class="preset-btn active" onclick="applyPreset(0,55,this)">All</button>
+    <button class="preset-btn active" onclick="applyPreset(0,58,this)">All</button>
     <button class="preset-btn" onclick="applyPreset(0,20,this)">Jan 1&ndash;21</button>
     <button class="preset-btn" onclick="applyPreset(21,34,this)">Jan 22&ndash;Feb 4</button>
-    <button class="preset-btn" onclick="applyPreset(35,55,this)">Feb 5&ndash;26</button>
-    <button class="preset-btn" onclick="applyPreset(51,55,this)">This Week</button>
+    <button class="preset-btn" onclick="applyPreset(35,58,this)">Feb 5&ndash;Mar 1</button>
+    <button class="preset-btn" onclick="applyPreset(51,58,this)">This Week</button>
     <button class="preset-btn" onclick="applyPreset(38,51,this)">Prev 2 Weeks</button>
-    <button class="preset-btn" onclick="applyPreset(46,55,this)">Last 10 Days</button>
+    <button class="preset-btn" onclick="applyPreset(49,58,this)">Last 10 Days</button>
   </div>
   <span class="filter-summary" id="filterSummary"></span>
 </div>
@@ -383,55 +383,48 @@
 </div>
 
 <footer>
-  <span class="foot-text">Source: Assembled CSV exports &mdash; Tutor Support &mdash; 56 days / 25,193 conversations &mdash; All contact reasons</span>
-  <span class="foot-tag">Updated Feb 27, 2026 &mdash; Will / Program Management</span>
+  <span class="foot-text">Source: Assembled CSV exports &mdash; Tutor Support &mdash; 59 days / 26,328 conversations &mdash; All contact reasons</span>
+  <span class="foot-tag">Updated Mar 2, 2026 &mdash; Will / Program Management</span>
 </footer>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
-const DAYS = [
-  'Jan 1','Jan 2','Jan 3','Jan 4','Jan 5','Jan 6','Jan 7','Jan 8','Jan 9','Jan 10',
-  'Jan 11','Jan 12','Jan 13','Jan 14','Jan 15','Jan 16','Jan 17','Jan 18','Jan 19','Jan 20','Jan 21',
-  'Jan 22','Jan 23','Jan 24','Jan 25','Jan 26','Jan 27','Jan 28','Jan 29','Jan 30','Jan 31',
-  'Feb 1','Feb 2','Feb 3','Feb 4','Feb 5','Feb 6','Feb 7','Feb 8','Feb 9','Feb 10',
-  'Feb 11','Feb 12','Feb 13','Feb 14','Feb 15','Feb 16','Feb 17','Feb 18',
-  'Feb 20','Feb 21','Feb 22','Feb 23','Feb 24','Feb 25','Feb 26'
-];
+const DAYS = ['Jan 1','Jan 2','Jan 3','Jan 4','Jan 5','Jan 6','Jan 7','Jan 8','Jan 9','Jan 10','Jan 11','Jan 12','Jan 13','Jan 14','Jan 15','Jan 16','Jan 17','Jan 18','Jan 19','Jan 20','Jan 21','Jan 22','Jan 23','Jan 24','Jan 25','Jan 26','Jan 27','Jan 28','Jan 29','Jan 30','Jan 31','Feb 1','Feb 2','Feb 3','Feb 4','Feb 5','Feb 6','Feb 7','Feb 8','Feb 9','Feb 10','Feb 11','Feb 12','Feb 13','Feb 14','Feb 15','Feb 16','Feb 17','Feb 18','Feb 20','Feb 21','Feb 22','Feb 23','Feb 24','Feb 25','Feb 26','Feb 27','Feb 28','Mar 1'];
 
-const TOTAL_CONVS = [121,216,190,193,447,357,382,530,298,256,280,536,532,515,478,334,241,278,471,533,533,441,320,230,270,566,554,491,489,322,263,294,525,587,596,690,490,307,312,705,719,683,682,434,262,385,570,676,639,467,346,385,707,706,706,653];
+const TOTAL_CONVS = [121,216,190,193,447,357,382,530,298,256,280,536,532,515,478,334,241,278,471,533,533,441,320,230,270,566,554,491,489,322,263,294,525,587,596,690,490,307,312,705,719,683,682,434,262,385,570,676,639,467,346,385,707,706,706,653,453,293,389];
 
 const CAT_DATA = [
-  {name:'Scheduling', d:[53,113,93,100,227,175,189,249,153,103,121,214,233,247,205,139,109,120,209,227,213,182,127,88,127,251,224,182,210,137,90,125,225,226,256,255,191,109,124,284,282,252,303,194,121,175,276,296,285,196,151,172,334,331,312,302], ytd:10887, color:'#2E75B6', group:'Operations'},
+  {name:'Scheduling', d:[8,16,10,13,31,21,27,23,24,21,15,35,30,43,20,24,15,22,28,37,35,31,16,11,22,35,48,41,50,28,19,37,51,54,67,61,42,28,31,63,59,60,68,39,38,47,64,76,64,47,41,50,93,72,73,75,56,35,44], ytd:2334, color:'#2E75B6', group:'Operations'},
   {name:'Invoice / Other', d:[52,103,88,97,216,165,181,252,132,88,107,207,218,216,201,135,102,120,184,213,225,188,118,75,116,244,236,210,210,138,92,124,221,226,256,286,178,98,125,278,296,282,262,165,85,145,215,268,249,189,144,153,291,261,283,301], ytd:10310, color:'#64748B', group:'Invoicing'},
-  {name:'Payment/Disbursement', d:[39,83,73,57,160,123,126,182,82,55,79,149,160,164,133,102,65,76,135,152,158,126,87,68,80,176,142,94,85,72,54,63,116,129,114,127,117,63,62,170,156,159,168,111,60,96,156,154,148,103,69,70,169,166,169,162], ytd:6414, color:'#8B5CF6', group:'Operations'},
-  {name:'Session Link / Tech Issues', d:[35,75,69,59,140,113,108,182,85,53,79,144,145,146,122,81,55,75,115,130,132,114,71,60,62,156,103,66,50,38,25,27,61,92,89,103,65,33,43,87,100,86,110,51,30,42,73,75,80,48,32,25,95,100,75,39], ytd:4549, color:'#F43F5E', group:'Technical'},
-  {name:'Other / General', d:[31,41,45,39,76,67,71,120,53,76,75,143,114,108,103,82,46,68,121,129,128,109,95,59,63,124,109,106,85,54,60,55,86,129,102,110,71,48,44,95,110,111,103,62,39,61,80,103,101,68,56,66,108,119,110,69], ytd:4706, color:'#475569', group:'Operations'},
-  {name:'Opportunities / Matching', d:[13,48,26,32,74,48,63,72,59,35,44,66,76,83,89,54,59,49,91,68,67,53,44,45,40,78,77,70,77,48,31,36,67,63,87,72,72,36,34,77,94,74,77,69,37,54,84,94,88,55,41,50,88,86,89,79], ytd:3482, color:'#10B981', group:'Operations'},
-  {name:'Profile / Account', d:[17,41,30,41,81,57,72,76,50,31,37,53,61,75,68,46,37,39,64,66,81,59,35,35,39,90,74,57,60,48,22,31,82,66,82,50,56,42,36,69,62,72,94,67,38,59,81,98,107,79,57,55,110,79,83,102], ytd:3399, color:'#06B6D4', group:'Operations'},
-  {name:'Student Roster', d:[4,16,14,21,46,39,44,34,22,26,31,43,54,45,39,32,21,25,41,35,43,38,29,21,23,42,38,39,33,38,24,36,53,54,47,37,46,21,38,67,72,52,76,48,26,44,64,66,68,60,43,47,87,71,79,67], ytd:2369, color:'#84CC16', group:'Operations'},
-  {name:'Incentive/Rate Not Applied', d:[8,16,11,7,20,26,23,34,20,15,22,33,47,48,39,32,31,22,40,41,49,42,20,22,27,42,49,35,43,41,31,28,52,51,62,47,43,29,27,69,62,67,80,49,45,39,85,64,69,50,38,52,85,82,80,74], ytd:2365, color:'#EF4444', group:'Invoicing Bug'},
-  {name:'No-Show Invoice Process', d:[5,6,7,7,19,23,21,24,13,12,14,25,39,30,32,13,11,10,27,28,24,21,15,11,20,37,35,20,24,22,15,16,28,36,27,47,36,25,17,44,58,45,54,31,19,30,60,43,42,34,31,26,60,63,59,65], ytd:1606, color:'#F59E0B', group:'Invoicing Bug'},
-  {name:'VT4S / Schools', d:[4,6,8,6,27,27,21,17,12,6,9,35,50,36,40,19,18,7,22,44,36,21,16,11,11,47,49,34,30,22,8,4,25,43,38,39,19,8,6,34,64,42,61,23,8,15,23,40,45,19,22,17,47,50,46,45], ytd:1482, color:'#A78BFA', group:'Operations'},
-  {name:'Notes Cannot Be Added', d:[6,8,6,4,24,9,14,21,9,8,4,19,15,19,18,11,3,4,13,20,13,19,16,5,12,38,44,21,20,12,18,16,36,25,27,72,57,30,26,71,64,58,57,37,19,28,46,50,54,44,24,13,53,65,73,36], ytd:1534, color:'#F97316', group:'Invoicing Bug'},
-  {name:'Rate/Contract Questions', d:[5,9,7,7,32,14,19,20,13,7,10,19,30,18,29,13,9,12,20,27,24,24,11,15,14,36,31,28,30,18,24,24,41,27,21,27,17,13,10,30,23,22,22,25,11,21,24,38,26,28,17,12,32,35,29,25], ytd:1175, color:'#0EA5E9', group:'Operations'},
-  {name:'Instant Tutoring', d:[4,5,8,9,17,14,10,13,8,5,14,22,14,10,20,4,8,9,12,16,12,7,14,7,0,17,16,14,28,7,12,6,23,21,25,32,14,14,8,25,24,17,29,11,7,19,16,31,16,15,13,21,21,27,34,30], ytd:855, color:'#34D399', group:'Operations'},
-  {name:'Substitute Sessions', d:[3,7,0,2,14,10,14,7,4,3,2,17,20,10,26,5,2,4,12,18,7,6,10,4,5,37,29,29,23,4,2,2,10,12,21,12,10,4,6,13,28,15,28,11,1,8,7,29,16,11,3,5,20,26,25,26], ytd:685, color:'#FCD34D', group:'Operations'},
-  {name:'Phantom/Unconfirmed Invoice', d:[0,5,6,5,11,4,8,7,4,7,7,11,8,6,11,8,7,8,7,9,12,6,4,13,8,17,10,11,14,5,9,2,14,15,9,15,5,11,9,16,22,9,16,19,12,14,18,25,20,9,16,12,22,18,17,15], ytd:608, color:'#EC4899', group:'Invoicing Bug'},
-  {name:'Wrong Duration', d:[1,2,1,1,3,4,5,6,5,4,2,10,9,7,5,3,6,2,3,4,7,5,0,4,4,9,7,6,7,3,4,8,16,8,5,22,17,16,12,18,27,20,18,14,10,13,18,14,17,7,8,6,12,14,16,3], ytd:478, color:'#4B9FE1', group:'Invoicing Bug'},
-  {name:'Invoice Date Offset', d:[0,0,1,0,0,0,0,4,7,6,4,2,8,9,4,5,1,0,0,3,7,3,2,0,1,3,3,5,5,3,2,1,3,2,3,5,20,13,16,37,47,41,28,11,12,17,13,24,17,7,3,1,2,3,3,5], ytd:422, color:'#FBBF24', group:'Invoicing Bug'},
-  {name:'Duplicate Invoices', d:[0,1,0,1,4,7,3,1,2,2,4,3,12,2,4,4,3,0,4,4,3,1,3,1,3,5,9,0,8,1,1,6,9,8,10,17,26,22,10,29,19,17,17,11,6,17,20,13,22,5,11,6,8,16,13,8], ytd:442, color:'#C084FC', group:'Invoicing Bug'},
-  {name:'Invoice Shows $0', d:[0,1,2,0,0,0,1,1,0,2,1,2,0,1,4,1,1,0,1,1,2,1,2,1,1,8,2,3,3,2,2,0,4,2,3,1,8,9,5,13,8,14,6,5,4,6,11,10,15,6,9,7,11,12,10,8], ytd:233, color:'#FB7185', group:'Invoicing Bug'},
-  {name:'Student Removed Before Invoice', d:[0,3,2,0,3,1,4,1,1,4,3,2,3,4,1,2,3,2,4,6,3,5,1,1,2,2,3,5,5,2,0,0,1,1,2,5,4,0,1,5,4,4,5,5,4,4,5,9,6,4,3,2,6,6,8,3], ytd:175, color:'#94A3B8', group:'Invoicing Bug'},
-  {name:'No-Show Duration Error', d:[0,0,1,0,0,0,0,2,0,1,2,1,1,2,3,0,0,0,2,5,1,0,1,3,0,2,2,4,2,3,2,0,1,4,2,9,2,1,3,3,3,2,4,8,1,4,0,5,2,7,0,4,2,5,7,4], ytd:123, color:'#6EE7B7', group:'Invoicing Bug'},
-  {name:'Auto-Invoice Launch Confusion', d:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1,1,0,1,0,1,0,0,0,1,0,0,1,0,1,0,0,0,0,1,1,0], ytd:12, color:'#14B8A6', group:'Invoicing Bug'},
-  {name:'Bot Stale Instructions', d:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2,0,0,0,0,0,0,0,0], ytd:3, color:'#334155', group:'Invoicing Bug'},
+  {name:'Payment/Disbursement', d:[35,48,52,31,97,64,75,106,46,30,46,83,77,88,68,64,30,46,70,81,99,65,48,36,46,106,88,63,45,53,36,48,73,79,64,80,62,26,38,96,72,84,64,46,19,34,64,65,47,49,28,31,66,55,62,66,41,21,32], ytd:3434, color:'#8B5CF6', group:'Operations'},
+  {name:'Session Link / Tech Issues', d:[3,2,3,4,12,10,4,14,10,1,7,7,12,4,5,2,1,4,5,9,7,14,3,6,2,8,13,12,8,4,6,7,7,25,18,30,4,6,3,14,12,12,21,4,0,5,10,12,11,9,6,1,14,20,9,20,8,4,6], ytd:500, color:'#F43F5E', group:'Technical'},
+  {name:'Other / General', d:[39,65,66,75,141,113,131,202,103,115,107,224,183,189,181,122,89,110,184,208,206,172,131,85,91,189,173,171,188,108,97,92,172,226,209,235,144,110,106,221,233,239,192,134,91,103,150,207,191,148,109,142,209,212,212,187,142,89,115], ytd:8878, color:'#475569', group:'Operations'},
+  {name:'Opportunities / Matching', d:[7,27,18,18,32,23,25,38,36,16,16,32,36,30,42,21,27,25,48,25,26,25,19,20,21,28,33,35,34,13,12,15,22,16,33,30,27,10,9,17,33,25,22,28,5,21,28,38,43,16,16,13,26,26,24,37,27,17,11], ytd:1443, color:'#10B981', group:'Operations'},
+  {name:'Profile / Account', d:[4,6,1,3,6,9,13,21,9,2,7,6,7,11,5,5,1,2,5,7,6,3,6,7,6,9,8,8,5,2,2,4,11,4,10,10,7,4,3,10,11,4,6,7,4,10,6,11,16,18,8,7,13,19,12,16,8,4,6], ytd:441, color:'#06B6D4', group:'Operations'},
+  {name:'Student Roster', d:[7,14,9,18,43,30,37,33,20,23,26,45,44,32,30,31,21,22,38,30,38,33,27,16,21,32,29,34,28,28,18,34,38,38,45,39,37,15,29,51,48,40,51,30,17,34,47,46,58,42,33,38,69,56,67,64,52,20,49], ytd:2044, color:'#84CC16', group:'Operations'},
+  {name:'Incentive/Rate Not Applied', d:[5,12,6,6,17,22,18,27,15,12,18,29,34,43,35,24,28,17,34,37,40,36,18,20,21,38,41,28,36,36,26,21,49,45,56,39,35,24,22,57,48,50,62,40,39,35,67,55,53,39,32,40,66,73,68,60,40,33,37], ytd:2064, color:'#EF4444', group:'Invoicing Bug'},
+  {name:'No-Show Invoice Process', d:[1,2,1,3,4,5,7,11,4,5,1,7,15,8,12,2,5,2,10,12,9,7,6,2,4,8,6,6,7,5,5,5,6,12,7,18,11,6,3,14,11,11,16,7,4,11,17,12,8,10,9,8,17,15,24,20,1,14,17], ytd:496, color:'#F59E0B', group:'Invoicing Bug'},
+  {name:'VT4S / Schools', d:[1,4,8,5,16,18,11,11,5,6,4,20,36,21,23,13,6,5,16,32,23,15,11,7,9,36,35,22,25,12,4,3,20,30,31,29,9,8,5,18,45,23,40,13,4,8,11,28,22,14,16,9,29,34,31,26,13,13,7], ytd:999, color:'#A78BFA', group:'Operations'},
+  {name:'Notes Cannot Be Added', d:[6,8,6,4,23,9,13,17,9,5,3,15,13,16,15,11,3,4,11,18,11,17,15,5,10,32,40,17,15,10,17,15,35,22,27,60,48,27,20,53,51,48,48,31,14,22,41,42,49,37,23,11,45,58,71,35,19,22,27], ytd:1399, color:'#F97316', group:'Invoicing Bug'},
+  {name:'Rate/Contract Questions', d:[0,0,1,1,0,1,0,0,0,1,1,0,3,1,1,0,0,0,1,2,1,0,0,0,1,1,0,1,0,0,1,1,2,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1,0,0,1,1], ytd:30, color:'#0EA5E9', group:'Operations'},
+  {name:'Instant Tutoring', d:[2,2,5,4,7,8,1,6,5,3,6,9,7,5,9,0,3,4,5,9,8,4,5,4,0,7,6,6,13,3,6,2,11,6,6,13,9,7,3,12,11,7,12,3,4,8,6,19,6,8,5,8,8,8,8,8,8,0,10], ytd:378, color:'#34D399', group:'Operations'},
+  {name:'Substitute Sessions', d:[0,3,0,2,5,5,9,5,2,3,2,6,7,5,13,2,1,4,5,6,3,3,6,1,2,12,12,19,14,1,1,1,5,6,8,8,6,0,5,7,14,5,16,3,1,4,4,12,7,2,0,1,9,14,9,11,7,4,2], ytd:330, color:'#FCD34D', group:'Operations'},
+  {name:'Phantom/Unconfirmed Invoice', d:[0,3,1,2,5,3,5,4,2,5,5,9,5,3,7,6,5,6,2,4,6,5,4,4,3,10,4,8,7,4,5,1,8,7,6,7,5,7,2,8,7,7,8,11,8,6,12,9,14,7,8,8,12,14,10,7,11,2,11], ytd:365, color:'#EC4899', group:'Invoicing Bug'},
+  {name:'Wrong Duration', d:[1,0,0,0,1,0,1,0,0,0,0,1,2,0,0,0,0,0,0,0,0,0,0,0,1,1,1,3,1,0,1,2,3,1,0,4,3,1,4,2,2,3,2,3,0,0,3,3,1,0,2,3,3,2,2,1,4,1,2], ytd:71, color:'#4B9FE1', group:'Invoicing Bug'},
+  {name:'Invoice Date Offset', d:[0,0,0,0,0,0,0,3,5,6,4,2,8,8,2,4,0,0,0,2,7,1,1,0,1,1,3,5,3,2,0,0,1,1,3,5,17,13,16,33,44,38,25,10,11,16,13,19,15,4,0,1,1,2,1,4,6,2,0], ytd:369, color:'#FBBF24', group:'Invoicing Bug'},
+  {name:'Duplicate Invoices', d:[0,0,0,0,1,2,0,0,0,1,0,0,3,0,0,0,0,0,2,0,0,1,1,0,2,2,1,0,0,0,0,2,2,4,1,10,10,9,5,6,2,9,3,1,0,6,9,2,9,0,4,2,4,8,4,2,1,2,1], ytd:134, color:'#C084FC', group:'Invoicing Bug'},
+  {name:'Invoice Shows $0', d:[0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1,1,0,1,0,1,1,0,1,0,1,0,0,1,0,0,0,0,0,2,1,2,2,2,0,4,3,3,6,2,1,4,7,2,5,2,3,3,1], ytd:66, color:'#FB7185', group:'Invoicing Bug'},
+  {name:'Student Removed Before Invoice', d:[2,4,2,4,6,14,5,6,3,1,10,5,9,7,8,3,5,5,5,10,6,8,3,2,7,8,10,9,8,10,4,4,8,7,4,3,12,4,5,17,12,14,20,15,2,8,15,13,17,11,4,5,13,10,13,12,6,6,10], ytd:459, color:'#94A3B8', group:'Invoicing Bug'},
+  {name:'No-Show Duration Error', d:[0,0,0,0,0,0,0,2,0,0,2,1,1,1,2,0,0,0,2,4,1,0,0,3,0,2,2,3,1,3,2,0,1,2,0,9,2,1,3,3,3,2,4,7,1,3,0,4,2,3,0,3,2,5,0,0,0,0,0], ytd:92, color:'#6EE7B7', group:'Invoicing Bug'},
+  {name:'Auto-Invoice Launch Confusion', d:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], ytd:2, color:'#14B8A6', group:'Invoicing Bug'},
+  {name:'Bot Stale Instructions', d:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], ytd:0, color:'#334155', group:'Invoicing Bug'},
 ];
 
 const INVOICE_BUG_NAMES = new Set(['Incentive/Rate Not Applied','Invoice Date Offset','Wrong Duration','Notes Cannot Be Added','No-Show Duration Error','Invoice Shows $0','Phantom/Unconfirmed Invoice','Duplicate Invoices','Student Removed Before Invoice','Bot Stale Instructions','Auto-Invoice Launch Confusion','No-Show Invoice Process']);
 
 // ─── STATE ───────────────────────────────────────────────────────────────────
-let filterStart = 0, filterEnd = 55;
+let filterStart = 0, filterEnd = 58;
 let charts = {};
 
 function getFiltered() {
@@ -488,7 +481,7 @@ function renderAll() {
   // Slider UI
   document.getElementById('lblStart').textContent = DAYS[filterStart];
   document.getElementById('lblEnd').textContent   = DAYS[filterEnd];
-  const pctS = (filterStart/55)*100, pctE = (filterEnd/55)*100;
+  const pctS = (filterStart/58)*100, pctE = (filterEnd/58)*100;
   document.getElementById('rangeFill').style.left  = pctS+'%';
   document.getElementById('rangeFill').style.width = (pctE-pctS)+'%';
   document.getElementById('sliderStart').value = filterStart;
