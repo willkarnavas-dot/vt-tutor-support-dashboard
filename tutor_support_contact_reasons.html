@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tutor Support Contact Reasons — Varsity Tutors</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{--blue-deep:#1F4E79;--blue-mid:#2E75B6;--blue-bright:#4B9FE1;--bg:#0A0F1A;--surface:#111827;--border:rgba(46,117,182,.2);--text:#E8EEF7;--text-dim:#6B82A0;--text-mid:#A8BCCC;--red:#EF4444;--amber:#F59E0B;--green:#10B981;--mono:'DM Mono',monospace;--display:'Syne',sans-serif;--body:'DM Sans',sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:var(--body);font-weight:300;min-height:100vh;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.6}
+  body::after{content:'';position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(31,78,121,.25) 0%,transparent 70%);pointer-events:none;z-index:0}
+  .wrapper{position:relative;z-index:1;max-width:1600px;margin:0 auto;padding:36px 28px 80px}
+
+  header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+  .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--blue-bright);text-transform:uppercase;margin-bottom:8px}
+  h1{font-family:var(--display);font-size:26px;font-weight:800;line-height:1.1}
+  h1 span{color:var(--blue-bright)}
+  .meta-block{text-align:right}
+  .date-label{font-family:var(--mono);font-size:11px;color:var(--text-dim);letter-spacing:.1em;margin-bottom:4px}
+  .date-val{font-family:var(--mono);font-size:14px;color:var(--blue-bright)}
+  .status-pill{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:4px 10px;border-radius:20px;border:1px solid rgba(16,185,129,.3);background:rgba(16,185,129,.06);font-family:var(--mono);font-size:10px;color:var(--green);letter-spacing:.08em}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+
+  /* FILTER BAR */
+  .filter-bar{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 18px;margin-bottom:14px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .filter-label{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--blue-bright);text-transform:uppercase;flex-shrink:0}
+  .filter-range{display:flex;align-items:center;gap:12px;flex:1;min-width:260px}
+  .range-bound{font-family:var(--mono);font-size:11px;color:var(--text);background:rgba(75,159,225,.08);border:1px solid rgba(75,159,225,.2);padding:3px 9px;border-radius:6px;min-width:50px;text-align:center;flex-shrink:0}
+  .range-slider-wrap{flex:1;position:relative;height:20px;display:flex;align-items:center}
+  .range-track{position:absolute;left:0;right:0;height:3px;background:rgba(255,255,255,.08);border-radius:2px}
+  .range-fill{position:absolute;height:3px;background:linear-gradient(90deg,var(--blue-mid),var(--blue-bright));border-radius:2px;pointer-events:none}
+  input[type=range]{-webkit-appearance:none;appearance:none;background:transparent;position:absolute;width:100%;height:20px;margin:0;pointer-events:all}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--blue-bright);border:2px solid var(--bg);cursor:pointer}
+  input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--blue-bright);border:2px solid var(--bg);cursor:pointer}
+  .r-end{z-index:2}
+  .filter-presets{display:flex;gap:5px;flex-shrink:0;flex-wrap:wrap}
+  .preset-btn{font-family:var(--mono);font-size:9px;letter-spacing:.07em;padding:4px 9px;border-radius:6px;border:1px solid var(--border);background:none;color:var(--text-dim);cursor:pointer;transition:all .15s;text-transform:uppercase}
+  .preset-btn:hover,.preset-btn.active{background:rgba(75,159,225,.12);border-color:rgba(75,159,225,.4);color:var(--blue-bright)}
+  .filter-summary{font-family:var(--mono);font-size:10px;color:var(--text-dim);flex-shrink:0;white-space:nowrap}
+
+  /* KPI ROW */
+  .kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;margin-bottom:14px}
+  .kpi-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:15px 16px;position:relative;overflow:hidden}
+  .kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+  .kpi-card.blue::before{background:linear-gradient(90deg,var(--blue-mid),var(--blue-bright))}
+  .kpi-card.red::before{background:linear-gradient(90deg,#EF4444,#F97316)}
+  .kpi-card.amber::before{background:linear-gradient(90deg,#F59E0B,#EAB308)}
+  .kpi-card.green::before{background:linear-gradient(90deg,#10B981,#34D399)}
+  .kpi-card.purple::before{background:linear-gradient(90deg,#8B5CF6,#A78BFA)}
+  .kpi-label{font-family:var(--mono);font-size:10px;letter-spacing:.11em;color:var(--text-dim);text-transform:uppercase;margin-bottom:8px}
+  .kpi-value{font-family:var(--display);font-size:36px;font-weight:800;line-height:1;color:var(--text);margin-bottom:4px}
+  .kpi-sub{font-size:10.5px;color:var(--text-dim)}
+  .up{color:var(--red)}.down{color:var(--green)}.neutral{color:var(--blue-bright)}
+
+  /* TABS */
+  .tab-bar{display:flex;gap:4px;margin-bottom:13px;border-bottom:1px solid var(--border)}
+  .tab-btn{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border:none;background:none;color:var(--text-dim);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s}
+  .tab-btn.active{color:var(--blue-bright);border-bottom-color:var(--blue-bright)}
+  .tab-btn:hover:not(.active){color:var(--text-mid)}
+  .tab-content{display:none}.tab-content.active{display:block}
+
+  /* PANELS */
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:13px;overflow:hidden;margin-bottom:13px}
+  .panel-header{padding:13px 18px 11px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+  .panel-title{font-family:var(--display);font-size:12.5px;font-weight:700;letter-spacing:.02em}
+  .panel-tag{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;color:var(--blue-bright);background:rgba(75,159,225,.1);border:1px solid rgba(75,159,225,.2);padding:2px 7px;border-radius:4px}
+
+  /* LEADERBOARD TABLE */
+  .cat-table{width:100%;border-collapse:collapse}
+  .cat-table th{padding:7px 14px;font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);text-align:left;background:rgba(255,255,255,.02);border-bottom:1px solid var(--border)}
+  .cat-table th.num{text-align:right}
+  .cat-table td{padding:7px 14px;font-size:11.5px;color:var(--text-mid);border-bottom:1px solid rgba(46,117,182,.06);vertical-align:middle}
+  .cat-table td.num{text-align:right;font-family:var(--mono);font-size:11px;color:var(--text)}
+  .cat-table tr:last-child td{border-bottom:none}
+  .cat-table tr:hover td{background:rgba(46,117,182,.05)}
+  .cname{display:flex;align-items:center;gap:8px}
+  .cdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+  .bar-cell{padding:7px 14px;vertical-align:middle}
+  .bar-wrap{display:flex;align-items:center;gap:7px}
+  .bar-track{flex:1;height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:2px}
+  .bar-pct{font-family:var(--mono);font-size:9.5px;color:var(--text-dim);min-width:30px;text-align:right}
+
+  /* GROUP ROWS */
+  .group-row td{background:rgba(46,117,182,.12)!important;color:var(--blue-mid)!important;
+    font-family:var(--mono)!important;font-size:9px!important;letter-spacing:.12em!important;
+    text-transform:uppercase!important;padding:6px 14px!important;font-weight:700!important;
+    border-top:1px solid rgba(46,117,182,.25)!important;border-bottom:none!important;}
+  .group-row td{background:rgba(46,117,182,.07);font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-bright);padding:5px 14px;border-bottom:1px solid var(--border)}
+
+  /* CHARTS */
+  .chart-area{padding:14px 16px;overflow-x:auto}
+
+  /* DAY TABLE */
+  .day-table{width:100%;border-collapse:collapse;font-size:9px}
+  .day-table th{padding:4px 5px;font-family:var(--mono);font-size:7px;letter-spacing:.07em;text-transform:uppercase;color:var(--text-dim);text-align:center;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02);white-space:nowrap}
+  .day-table th:first-child{text-align:left;min-width:140px}
+  .day-table td{padding:4px 5px;font-family:var(--mono);font-size:9px;color:var(--text-mid);text-align:center;border-bottom:1px solid rgba(46,117,182,.05)}
+  .day-table td:first-child{text-align:left;font-family:var(--body);font-size:9px;color:var(--text-dim);white-space:nowrap}
+  .day-table tr:hover td{background:rgba(46,117,182,.04)}
+  .day-table tr:last-child td{border-bottom:none}
+  .hot{color:#FCA5A5;font-weight:500}.warm{color:#FCD34D}.cool{color:var(--blue-bright)}
+
+  /* GRID */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+
+  footer{margin-top:32px;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+  .foot-text{font-family:var(--mono);font-size:9.5px;color:var(--text-dim)}
+  .foot-tag{font-family:var(--mono);font-size:9.5px;color:var(--blue-bright)}
+
+  @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  @media(max-width:1100px){.kpi-row{grid-template-columns:repeat(3,1fr)}.two-col{grid-template-columns:1fr}}
+  @media(max-width:700px){.kpi-row{grid-template-columns:repeat(2,1fr)}header{flex-direction:column;align-items:flex-start;gap:12px}}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<header>
+  <div>
+    <div class="eyebrow">Varsity Tutors &mdash; Tutor Support Operations</div>
+    <h1>Tutor Support <span>Contact Reasons</span></h1>
+  </div>
+  <div class="meta-block">
+    <div class="date-label">YTD Reporting Period</div>
+    <div class="date-val">Jan 1 &ndash; Mar 3, 2026</div>
+    <div class="status-pill"><span class="dot"></span>61 DAYS &mdash; 27,965 CONVERSATIONS</div>
+  </div>
+</header>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <span class="filter-label">Date Range</span>
+  <div class="filter-range">
+    <span class="range-bound" id="lblStart">Jan 1</span>
+    <div class="range-slider-wrap">
+      <div class="range-track"></div>
+      <div class="range-fill" id="rangeFill"></div>
+      <input type="range" id="sliderStart" min="0" max="60" value="60" step="1" style="z-index:1">
+      <input type="range" id="sliderEnd"   min="0" max="60" value="60" step="1" class="r-end">
+    </div>
+    <span class="range-bound" id="lblEnd">Feb 18</span>
+  </div>
+  <div class="filter-presets">
+    <button class="preset-btn active" onclick="applyPreset(0,60,this)">All</button>
+    <button class="preset-btn" onclick="applyPreset(0,20,this)">Jan 1&ndash;21</button>
+    <button class="preset-btn" onclick="applyPreset(21,34,this)">Jan 22&ndash;Feb 4</button>
+    <button class="preset-btn" onclick="applyPreset(35,60,this)">Feb 5&ndash;Mar 3</button>
+    <button class="preset-btn" onclick="applyPreset(53,60,this)">This Week</button>
+    <button class="preset-btn" onclick="applyPreset(38,51,this)">Prev 2 Weeks</button>
+    <button class="preset-btn" onclick="applyPreset(51,60,this)">Last 10 Days</button>
+  </div>
+  <span class="filter-summary" id="filterSummary"></span>
+</div>
+
+<!-- KPI ROW -->
+<div class="kpi-row">
+  <div class="kpi-card blue">
+    <div class="kpi-label">Total Contacts</div>
+    <div class="kpi-value" id="kpi0">0</div>
+    <div class="kpi-sub">All contact reasons</div>
+  </div>
+  <div class="kpi-card red">
+    <div class="kpi-label">#1 Category</div>
+    <div class="kpi-value" id="kpi1">0</div>
+    <div class="kpi-sub" id="kpi1lbl">Scheduling</div>
+  </div>
+  <div class="kpi-card amber">
+    <div class="kpi-label">Invoice Bugs</div>
+    <div class="kpi-value" id="kpi2">0</div>
+    <div class="kpi-sub">12 tracked bugs</div>
+  </div>
+  <div class="kpi-card purple">
+    <div class="kpi-label">Tech Issues</div>
+    <div class="kpi-value" id="kpi3">0</div>
+    <div class="kpi-sub">Session Link / Platform</div>
+  </div>
+  <div class="kpi-card green">
+    <div class="kpi-label">Unique Days</div>
+    <div class="kpi-value" id="kpi4">0</div>
+    <div class="kpi-sub">In selected range</div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('overview',this)">Overview</button>
+  <button class="tab-btn" onclick="switchTab('timeline',this)">Timeline</button>
+  <button class="tab-btn" onclick="switchTab('invoicing',this)">Invoicing Bugs</button>
+  <button class="tab-btn" onclick="switchTab('scheduling',this)">Active Tickets</button>
+  <button class="tab-btn" onclick="switchTab('detail',this)">Day-by-Day</button>
+</div>
+
+<!-- ACTIVE TICKETS TAB -->
+<div id="tab-scheduling" class="tab-content">
+
+  <!-- INVOICING BUGS -->
+  <div class="panel" style="animation:none;opacity:1;margin-bottom:14px">
+    <div class="panel-header">
+      <span class="panel-title">Invoicing Bugs &mdash; Active Tickets</span>
+      <span class="panel-tag">LAST 14 DAYS &mdash; FEB 12-25 &mdash; CLICK ROW TO EXPAND</span>
+    </div>
+    <table class="cat-table">
+      <thead>
+        <tr>
+          <th style="width:6%">Ticket</th>
+          <th style="width:36%">Issue</th>
+          <th class="num" style="width:9%">14-Day</th>
+          <th class="num" style="width:9%">This Wk</th>
+          <th class="num" style="width:9%">% of Vol</th>
+          <th style="width:10%">Status</th>
+          <th style="width:21%">Top Example</th>
+        </tr>
+      </thead>
+      <tbody id="invoiceTicketBody"></tbody>
+    </table>
+  </div>
+
+  <!-- SCHEDULING PLATFORM -->
+  <div class="panel" style="animation:none;opacity:1;margin-bottom:14px">
+    <div class="panel-header">
+      <span class="panel-title">Scheduling Platform Defects &mdash; Active Tickets</span>
+      <span class="panel-tag">LAST 14 DAYS &mdash; FEB 12-25 &mdash; CLICK ROW TO EXPAND</span>
+    </div>
+    <table class="cat-table">
+      <thead>
+        <tr>
+          <th style="width:6%">Ticket</th>
+          <th style="width:36%">Issue</th>
+          <th class="num" style="width:9%">14-Day</th>
+          <th class="num" style="width:9%">This Wk</th>
+          <th class="num" style="width:9%">% of Vol</th>
+          <th style="width:10%">Status</th>
+          <th style="width:21%">Top Example</th>
+        </tr>
+      </thead>
+      <tbody id="schedTicketBody"></tbody>
+    </table>
+  </div>
+
+  <!-- NOT YET TICKETED -->
+  <div class="panel" style="animation:none;opacity:1">
+    <div class="panel-header">
+      <span class="panel-title">Platform Issues &mdash; Not Yet Ticketed</span>
+      <span class="panel-tag">LAST 14 DAYS</span>
+    </div>
+    <table class="cat-table">
+      <thead>
+        <tr>
+          <th style="width:8%">Category</th>
+          <th style="width:34%">Issue</th>
+          <th class="num" style="width:9%">14-Day</th>
+          <th class="num" style="width:9%">This Wk</th>
+          <th class="num" style="width:9%">% of Vol</th>
+          <th style="width:31%">Top Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-family:'DM Mono',monospace;font-size:10px;color:#F59E0B">Invoicing</td>
+          <td>Phantom / Unconfirmed Invoice</td>
+          <td class="num">57</td><td class="num">—</td><td class="num">0.82%</td>
+          <td style="font-size:10px;color:#A8BCCC">"I was automatically invoiced for a session that did not happen"</td>
+        </tr>
+        <tr style="background:#0F1623">
+          <td style="font-family:'DM Mono',monospace;font-size:10px;color:#F59E0B">Invoicing</td>
+          <td>Invoice Shows $0</td>
+          <td class="num">33</td><td class="num">—</td><td class="num">0.47%</td>
+          <td style="font-size:10px;color:#A8BCCC">"my past 4 sessions have not been paid and the invoice shows up for $0"</td>
+        </tr>
+        <tr>
+          <td style="font-family:'DM Mono',monospace;font-size:10px;color:#2E75B6">Scheduling</td>
+          <td>Session Auto-Created Incorrectly / Wrong Time</td>
+          <td class="num">11</td><td class="num">0</td><td class="num">0.16%</td>
+          <td style="font-size:10px;color:#A8BCCC">"VT automatically generated an invoice for a session that did not happen — I need one removed"</td>
+        </tr>
+        <tr style="background:#0F1623">
+          <td style="font-family:'DM Mono',monospace;font-size:10px;color:#2E75B6">Scheduling</td>
+          <td>Substitute Session Flow Broken</td>
+          <td class="num">6</td><td class="num">2</td><td class="num">0.09%</td>
+          <td style="font-size:10px;color:#A8BCCC">"I am following up to see if my substitute class has been loaded into my drop down yet. I still do not see it."</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- OVERVIEW TAB -->
+<div id="tab-overview" class="tab-content active">
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">Contact Volume by Category</span>
+      <span class="panel-tag">ALL REASONS &mdash; FILTERED RANGE</span>
+    </div>
+    <div class="chart-area"><canvas id="overviewChart" height="220"></canvas></div>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">Category Leaderboard</span>
+      <span class="panel-tag">SORTED BY VOLUME</span>
+    </div>
+    <table class="cat-table">
+      <thead>
+        <tr>
+          <th style="width:32%">Category</th>
+          <th class="num" style="width:8%">Total</th>
+          <th class="num" style="width:8%">Last Day</th>
+          <th class="num" style="width:8%">Daily Avg</th>
+          <th style="width:32%">Share of Volume</th>
+          <th class="num" style="width:12%">% of Contacts</th>
+        </tr>
+      </thead>
+      <tbody id="catTableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TIMELINE TAB -->
+<div id="tab-timeline" class="tab-content">
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">Daily Volume &mdash; Top Categories</span>
+      <span class="panel-tag">FILTERED RANGE</span>
+    </div>
+    <div class="chart-area"><canvas id="timelineChart" height="300"></canvas></div>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">Total Conversations Per Day</span>
+      <span class="panel-tag">ALL CONTACT TYPES</span>
+    </div>
+    <div class="chart-area"><canvas id="totalConvsChart" height="130"></canvas></div>
+  </div>
+</div>
+
+<!-- INVOICING BUGS TAB -->
+<div id="tab-invoicing" class="tab-content">
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">Invoice Bug Volume &mdash; Daily Trend</span>
+      <span class="panel-tag">12 TRACKED BUGS</span>
+    </div>
+    <div class="chart-area"><canvas id="invoicingChart" height="280"></canvas></div>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">Invoice Bug Leaderboard</span>
+      <span class="panel-tag">FILTERED RANGE</span>
+    </div>
+    <table class="cat-table">
+      <thead>
+        <tr>
+          <th style="width:36%">Bug</th>
+          <th class="num" style="width:8%">Total</th>
+          <th class="num" style="width:8%">Last Day</th>
+          <th class="num" style="width:8%">Daily Avg</th>
+          <th style="width:28%">Share</th>
+          <th class="num" style="width:12%">% of All Contacts</th>
+        </tr>
+      </thead>
+      <tbody id="invoiceTableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- DAY-BY-DAY TAB -->
+<div id="tab-detail" class="tab-content">
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">Day-by-Day Heat Map &mdash; All Categories</span>
+      <span class="panel-tag">SCROLL HORIZONTALLY</span>
+    </div>
+    <div style="overflow-x:auto;padding:4px 0">
+      <table class="day-table">
+        <thead id="dtHead"></thead>
+        <tbody id="dtBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="foot-text">Source: Assembled CSV exports &mdash; Tutor Support &mdash; 61 days / 27,965 conversations &mdash; All contact reasons</span>
+  <span class="foot-tag">Updated Mar 4, 2026 &mdash; Will / Program Management</span>
+</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+const DAYS = ['Jan 1','Jan 2','Jan 3','Jan 4','Jan 5','Jan 6','Jan 7','Jan 8','Jan 9','Jan 10','Jan 11','Jan 12','Jan 13','Jan 14','Jan 15','Jan 16','Jan 17','Jan 18','Jan 19','Jan 20','Jan 21','Jan 22','Jan 23','Jan 24','Jan 25','Jan 26','Jan 27','Jan 28','Jan 29','Jan 30','Jan 31','Feb 1','Feb 2','Feb 3','Feb 4','Feb 5','Feb 6','Feb 7','Feb 8','Feb 9','Feb 10','Feb 11','Feb 12','Feb 13','Feb 14','Feb 15','Feb 16','Feb 17','Feb 18','Feb 20','Feb 21','Feb 22','Feb 23','Feb 24','Feb 25','Feb 26','Feb 27','Feb 28','Mar 1','Mar 2','Mar 3'];
+
+const TOTAL_CONVS = [121,216,190,193,447,357,382,530,298,256,280,536,532,515,478,334,241,278,471,533,533,441,320,230,270,566,554,491,489,322,263,294,525,587,596,690,490,307,312,705,719,683,682,434,262,385,570,676,639,467,346,385,707,706,706,653,453,293,389,773,864];
+
+const CAT_DATA = [
+  {name:'MD-21 Session Error', d:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], ytd:0, color:'#E74C3C', group:'Scheduling'},
+  {name:'MD-22 Cancel Option Missing', d:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], ytd:0, color:'#8E44AD', group:'Scheduling'},
+  {name:'Scheduling', d:[8,22,19,21,50,42,37,28,36,23,25,41,39,54,35,34,17,31,39,48,41,31,22,17,26,41,59,49,54,35,23,41,57,59,72,66,45,33,34,80,77,71,79,52,41,50,75,83,78,58,48,52,103,83,81,84,66,41,48,143,78], ytd:3025, color:'#2E75B6', group:'Operations'},
+  {name:'Invoice / Other', d:[6,19,17,10,45,40,55,50,25,23,26,55,63,61,50,36,19,21,43,49,59,51,41,20,31,81,88,64,71,31,33,29,69,73,74,138,116,62,79,125,166,160,122,71,39,62,86,96,101,75,47,51,100,96,125,111,46,45,46,119,175], ytd:3987, color:'#E07B39', group:'Invoicing'},
+  {name:'Payment/Disbursement', d:[28,32,35,23,64,36,43,83,33,20,26,57,56,60,43,38,21,29,55,58,73,50,35,22,37,89,71,49,32,51,34,41,71,72,53,58,36,17,20,53,37,48,36,31,14,24,40,43,29,34,24,16,41,44,37,51,28,14,27,38,55], ytd:2515, color:'#8B5CF6', group:'Operations'},
+  {name:'Session Link / Tech Issues', d:[2,2,0,2,12,6,6,10,6,1,2,5,9,5,3,1,2,8,6,10,6,12,3,4,4,8,11,9,7,3,5,5,6,9,18,18,6,5,2,10,11,12,19,2,3,5,9,12,13,8,6,1,9,17,7,16,7,3,8,8,12], ytd:437, color:'#F43F5E', group:'Technical'},
+  {name:'Other / General', d:[42,58,61,64,129,99,115,199,95,105,102,215,174,169,175,117,85,96,164,193,185,156,118,86,86,173,149,153,166,98,89,84,153,223,183,201,112,92,72,193,161,189,193,118,79,91,164,194,174,137,110,133,209,215,221,170,144,85,117,203,222], ytd:8558, color:'#475569', group:'Operations'},
+  {name:'Opportunities / Matching', d:[15,34,21,27,45,31,41,53,45,25,26,47,47,52,53,31,37,34,59,49,45,44,34,22,28,43,53,43,41,23,16,24,31,22,48,40,36,15,13,32,46,37,29,39,11,32,32,61,57,27,23,25,36,41,36,52,35,24,20,52,59], ytd:2199, color:'#10B981', group:'Operations'},
+  {name:'Profile / Account', d:[4,6,1,4,6,8,7,16,6,1,6,4,6,7,4,5,1,1,5,3,5,2,4,6,4,7,5,6,4,2,1,0,5,4,6,7,5,3,3,7,7,0,5,5,2,5,6,10,5,13,4,3,8,12,9,6,7,1,3,4,11], ytd:313, color:'#06B6D4', group:'Operations'},
+  {name:'Student Roster', d:[8,21,18,23,49,41,39,45,25,27,32,56,51,35,43,33,22,26,43,46,48,34,31,25,24,39,32,43,35,39,24,37,46,47,55,52,46,21,32,62,68,44,63,40,22,39,54,61,69,44,34,43,86,67,73,75,57,22,60,69,72], ytd:2617, color:'#84CC16', group:'Operations'},
+  {name:'Incentive/Rate Not Applied', d:[4,10,5,4,12,18,14,16,10,15,12,18,25,28,22,18,18,15,27,24,30,28,13,13,16,25,32,23,24,22,16,19,37,27,37,29,27,19,15,46,40,42,48,32,25,25,48,42,41,36,22,30,47,53,46,39,28,28,30,49,44], ytd:1608, color:'#EF4444', group:'Invoicing Bug'},
+  {name:'No-Show Invoice Process', d:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], ytd:1, color:'#F59E0B', group:'Invoicing Bug'},
+  {name:'VT4S / Schools', d:[0,5,5,4,11,16,9,7,3,4,3,12,26,12,14,10,7,5,13,23,18,13,5,4,5,25,20,16,19,7,4,2,11,23,21,17,7,5,3,16,28,9,23,8,4,3,11,18,16,9,10,9,19,24,23,16,8,9,8,21,28], ytd:734, color:'#A78BFA', group:'Operations'},
+  {name:'Notes Cannot Be Added', d:[0,0,0,1,4,2,0,1,0,0,0,2,2,1,6,2,1,0,0,5,1,4,1,0,1,1,8,4,0,1,5,2,8,3,4,15,12,3,4,14,8,10,6,4,2,3,3,4,6,2,3,1,4,5,5,1,1,3,2,20,21], ytd:232, color:'#F97316', group:'Invoicing Bug'},
+  {name:'Rate/Contract Questions', d:[0,0,2,1,1,1,0,0,1,0,2,1,5,1,2,0,2,0,1,0,1,0,0,2,2,1,0,1,0,0,2,1,2,0,1,0,0,1,1,2,0,0,1,1,0,1,3,4,1,0,2,1,5,2,3,2,0,2,2,1,0], ytd:68, color:'#0EA5E9', group:'Operations'},
+  {name:'Instant Tutoring', d:[3,3,3,3,7,7,2,7,4,3,5,7,5,6,7,0,4,4,3,8,7,4,4,2,0,8,7,5,12,1,3,3,9,4,6,11,5,7,2,11,8,5,11,3,4,9,5,9,4,5,4,5,8,6,7,7,6,0,5,5,11], ytd:329, color:'#34D399', group:'Operations'},
+  {name:'Substitute Sessions', d:[0,1,0,1,4,3,7,3,2,2,0,4,5,5,7,2,0,3,5,6,2,1,5,2,0,6,6,14,11,1,1,0,5,4,8,5,2,0,1,6,10,3,11,4,1,6,4,6,9,3,0,2,7,10,10,5,6,3,2,6,7], ytd:255, color:'#FCD34D', group:'Operations'},
+  {name:'Phantom/Unconfirmed Invoice', d:[0,1,1,0,1,0,2,1,0,2,2,5,1,1,2,2,2,3,0,0,1,0,1,0,1,5,2,0,2,1,1,0,1,1,2,3,1,3,1,2,2,2,1,4,3,2,3,3,2,1,2,3,6,5,3,2,2,2,4,3,6], ytd:115, color:'#EC4899', group:'Invoicing Bug'},
+  {name:'Wrong Duration', d:[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,3,1,0,3,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,1], ytd:14, color:'#4B9FE1', group:'Invoicing Bug'},
+  {name:'Invoice Date Offset', d:[0,0,0,0,0,0,0,3,3,3,3,2,6,8,2,3,0,0,0,2,7,1,0,0,1,0,2,5,2,1,0,0,1,0,3,3,12,9,14,21,33,25,16,5,7,11,6,12,10,3,0,0,0,0,0,3,4,0,0,1,1], ytd:254, color:'#FBBF24', group:'Invoicing Bug'},
+  {name:'Duplicate Invoices', d:[0,0,0,0,0,1,0,0,0,1,0,0,1,1,0,0,0,0,2,0,0,0,1,0,0,2,1,0,0,0,0,1,1,3,1,9,9,7,4,4,3,7,4,2,0,7,7,3,6,0,3,3,2,9,6,2,0,1,1,4,2], ytd:121, color:'#C084FC', group:'Invoicing Bug'},
+  {name:'Invoice Shows $0', d:[0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1,1,2,1,1,1,0,0,1,4,2,4,0,2,0,1,3,1,2,0,0,1,2,2], ytd:37, color:'#FB7185', group:'Invoicing Bug'},
+  {name:'Student Removed Before Invoice', d:[0,2,2,5,7,6,5,6,4,1,8,4,11,8,9,2,2,2,4,7,3,9,2,2,4,10,8,5,7,4,4,5,10,10,3,11,11,4,6,16,12,16,13,7,4,7,10,12,12,10,2,5,16,7,13,9,8,10,5,24,23], ytd:454, color:'#94A3B8', group:'Invoicing Bug'},
+  {name:'No-Show Duration Error', d:[0,0,0,0,0,0,0,1,0,0,0,1,0,1,1,0,0,0,2,2,1,0,0,3,0,2,0,2,1,2,1,0,1,1,0,4,1,0,1,3,1,1,1,6,1,2,0,1,2,2,0,1,0,5,0,0,0,0,0,0,0], ytd:54, color:'#6EE7B7', group:'Invoicing Bug'},
+  {name:'Auto-Invoice Launch Confusion', d:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1], ytd:5, color:'#14B8A6', group:'Invoicing Bug'},
+  {name:'Bot Stale Instructions', d:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], ytd:0, color:'#334155', group:'Invoicing Bug'},
+];
+
+const INVOICE_BUG_NAMES = new Set(['Incentive/Rate Not Applied','Invoice Date Offset','Wrong Duration','Notes Cannot Be Added','No-Show Duration Error','Invoice Shows $0','Phantom/Unconfirmed Invoice','Duplicate Invoices','Student Removed Before Invoice','Bot Stale Instructions','Auto-Invoice Launch Confusion','No-Show Invoice Process']);
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+let filterStart = 0, filterEnd = 60;
+let charts = {};
+
+function getFiltered() {
+  const days  = DAYS.slice(filterStart, filterEnd + 1);
+  const convs = TOTAL_CONVS.slice(filterStart, filterEnd + 1);
+  const cats  = CAT_DATA.map(c => {
+    const fd     = c.d.slice(filterStart, filterEnd + 1);
+    const ftotal = fd.reduce((s,v)=>s+v,0);
+    const favg   = Math.round(ftotal / fd.length);
+    return {...c, fd, ftotal, favg};
+  });
+  return {days, convs, cats, nDays: days.length,
+          totalContacts: convs.reduce((s,v)=>s+v,0)};
+}
+
+// ─── CHART HELPERS ────────────────────────────────────────────────────────────
+const CHART_OPTS = (days) => ({
+  responsive: true,
+  interaction: {mode:'index', intersect:false},
+  plugins: {
+    legend: {labels:{color:'#A8BCCC', font:{family:"'DM Mono',monospace",size:9.5}, boxWidth:10, padding:12}},
+    tooltip: {backgroundColor:'#1A2337', borderColor:'rgba(46,117,182,.3)', borderWidth:1,
+      titleColor:'#E8EEF7', bodyColor:'#A8BCCC',
+      titleFont:{family:"'DM Mono',monospace",size:11}, bodyFont:{family:"'DM Mono',monospace",size:10}}
+  },
+  scales: {
+    x: {ticks:{color:'#6B82A0', font:{family:"'DM Mono',monospace",size:days.length>20?7:8.5}, maxRotation:45}, grid:{color:'rgba(46,117,182,.06)'}},
+    y: {ticks:{color:'#6B82A0', font:{family:"'DM Mono',monospace",size:9}}, grid:{color:'rgba(46,117,182,.06)'}, beginAtZero:true}
+  }
+});
+
+function makeLineChart(id, days, datasets) {
+  if (charts[id]) charts[id].destroy();
+  charts[id] = new Chart(document.getElementById(id).getContext('2d'), {
+    type:'line',
+    data: {labels:days, datasets},
+    options: CHART_OPTS(days)
+  });
+}
+
+function makeBarChart(id, days, data, color='#2E75B6') {
+  if (charts[id]) charts[id].destroy();
+  charts[id] = new Chart(document.getElementById(id).getContext('2d'), {
+    type:'bar',
+    data: {labels:days, datasets:[{label:'Total Conversations', data, backgroundColor:color, borderColor:'#4B9FE1', borderWidth:1, borderRadius:2}]},
+    options: {...CHART_OPTS(days), plugins:{...CHART_OPTS(days).plugins, legend:{display:false}}}
+  });
+}
+
+// ─── RENDER ───────────────────────────────────────────────────────────────────
+function renderAll() {
+  const {days, convs, cats, nDays, totalContacts} = getFiltered();
+
+  // Slider UI
+  document.getElementById('lblStart').textContent = DAYS[filterStart];
+  document.getElementById('lblEnd').textContent   = DAYS[filterEnd];
+  const pctS = (filterStart/60)*100, pctE = (filterEnd/60)*100;
+  document.getElementById('rangeFill').style.left  = pctS+'%';
+  document.getElementById('rangeFill').style.width = (pctE-pctS)+'%';
+  document.getElementById('sliderStart').value = filterStart;
+  document.getElementById('sliderEnd').value   = filterEnd;
+
+  const totalCatContacts = cats.reduce((s,c)=>s+c.ftotal,0);
+  const invoiceBugTotal  = cats.filter(c=>INVOICE_BUG_NAMES.has(c.name)).reduce((s,c)=>s+c.ftotal,0);
+  const techTotal        = cats.find(c=>c.name==='Session Link / Tech Issues')?.ftotal || 0;
+  const top              = [...cats].sort((a,b)=>b.ftotal-a.ftotal)[0];
+
+  document.getElementById('filterSummary').textContent =
+    `${nDays} days / ${totalContacts.toLocaleString()} convs / ${totalCatContacts.toLocaleString()} categorized contacts`;
+
+  // KPIs
+  document.getElementById('kpi0').textContent = totalContacts.toLocaleString();
+  document.getElementById('kpi1').textContent = top.ftotal.toLocaleString();
+  document.getElementById('kpi1lbl').textContent = top.name;
+  document.getElementById('kpi2').textContent = invoiceBugTotal.toLocaleString();
+  document.getElementById('kpi3').textContent = techTotal.toLocaleString();
+  document.getElementById('kpi4').textContent = nDays;
+
+  // ── OVERVIEW LINE CHART (top 8 by volume) ──
+  const top8 = [...cats].sort((a,b)=>b.ftotal-a.ftotal).slice(0,8);
+  makeLineChart('overviewChart', days, top8.map(c=>({
+    label:c.name, data:c.fd, borderColor:c.color, backgroundColor:c.color+'12',
+    borderWidth:2, pointRadius:nDays<=14?3:1.5, pointHoverRadius:4, fill:false, tension:.35
+  })));
+
+  // ── CATEGORY LEADERBOARD ──
+  const tbody = document.getElementById('catTableBody');
+  tbody.innerHTML = '';
+
+  // Define group display order and labels
+  const GROUP_ORDER = ['Operations', 'Invoicing', 'Technical', 'Invoicing Bug'];
+  const GROUP_LABELS = {
+    'Operations':    'Operations',
+    'Invoicing':     'Invoicing — Other',
+    'Technical':     'Technical',
+    'Invoicing Bug': 'Invoicing Bugs — Tracked Defects',
+  };
+
+  // Group and sort within each group by volume desc
+  const grouped = {};
+  GROUP_ORDER.forEach(g => grouped[g] = []);
+  cats.forEach(c => {
+    const g = c.group || 'Operations';
+    if (grouped[g]) grouped[g].push(c);
+    else grouped['Operations'].push(c);
+  });
+  GROUP_ORDER.forEach(g => grouped[g].sort((a,b) => b.ftotal - a.ftotal));
+
+  GROUP_ORDER.forEach(g => {
+    const items = grouped[g];
+    if (!items || items.length === 0) return;
+
+    // Group header row
+    const gr = document.createElement('tr');
+    gr.className = 'group-row';
+    gr.innerHTML = `<td colspan="6">${GROUP_LABELS[g] || g}</td>`;
+    tbody.appendChild(gr);
+
+    items.forEach(c => {
+      const pct    = totalCatContacts > 0 ? Math.round(c.ftotal / totalCatContacts * 100) : 0;
+      const pctAll = totalContacts > 0 ? (c.ftotal / totalContacts * 100).toFixed(1) : '0.0';
+      const lastVal = c.fd[c.fd.length - 1] || 0;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><div class="cname"><div class="cdot" style="background:${c.color}"></div>${c.name}</div></td>
+        <td class="num">${c.ftotal.toLocaleString()}</td>
+        <td class="num">${lastVal}</td>
+        <td class="num">${c.favg}</td>
+        <td class="bar-cell"><div class="bar-wrap"><div class="bar-track">
+          <div class="bar-fill" style="background:${c.color};width:${pct}%"></div>
+        </div><span class="bar-pct">${pct}%</span></div></td>
+        <td class="num">${pctAll}%</td>`;
+      tbody.appendChild(tr);
+    });
+  });
+
+  // ── TIMELINE CHART (top 7 non-Other) ──
+  const timelineCats = [...cats].filter(c=>c.name!=='Other / General' && c.name!=='Invoice / Other')
+    .sort((a,b)=>b.ftotal-a.ftotal).slice(0,7);
+  makeLineChart('timelineChart', days, timelineCats.map(c=>({
+    label:c.name, data:c.fd, borderColor:c.color, backgroundColor:c.color+'12',
+    borderWidth:1.8, pointRadius:nDays<=14?2.5:1.2, pointHoverRadius:4, fill:false, tension:.35
+  })));
+  makeBarChart('totalConvsChart', days, convs);
+
+  // ── INVOICING CHART ──
+  const invCats = cats.filter(c=>INVOICE_BUG_NAMES.has(c.name)).sort((a,b)=>b.ftotal-a.ftotal);
+  makeLineChart('invoicingChart', days, invCats.map(c=>({
+    label:c.name, data:c.fd, borderColor:c.color, backgroundColor:c.color+'12',
+    borderWidth:1.8, pointRadius:nDays<=14?2.5:1.2, pointHoverRadius:4, fill:false, tension:.35
+  })));
+
+  // ── INVOICING TABLE ──
+  const itbody = document.getElementById('invoiceTableBody');
+  itbody.innerHTML = '';
+  invCats.forEach(c => {
+    const pct = invoiceBugTotal>0 ? Math.round(c.ftotal/invoiceBugTotal*100) : 0;
+    const pctAll = totalContacts>0 ? (c.ftotal/totalContacts*100).toFixed(1) : '0.0';
+    const lastVal = c.fd[c.fd.length-1] || 0;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td><div class="cname"><div class="cdot" style="background:${c.color}"></div>${c.name}</div></td>
+      <td class="num">${c.ftotal.toLocaleString()}</td>
+      <td class="num">${lastVal}</td>
+      <td class="num">${c.favg}</td>
+      <td class="bar-cell"><div class="bar-wrap"><div class="bar-track">
+        <div class="bar-fill" style="background:${c.color};width:${pct}%"></div>
+      </div><span class="bar-pct">${pct}%</span></div></td>
+      <td class="num">${pctAll}%</td>`;
+    itbody.appendChild(tr);
+  });
+
+  // ── DAY TABLE ──
+  const dtH = document.getElementById('dtHead'), dtB = document.getElementById('dtBody');
+  dtH.innerHTML = '<tr><th>Category</th>'+days.map(d=>`<th>${d}</th>`).join('')+'<th>Total</th></tr>';
+  dtB.innerHTML = '';
+  [...cats].sort((a,b)=>b.ftotal-a.ftotal).forEach(c => {
+    const mx = Math.max(...c.fd,1);
+    const tr = document.createElement('tr');
+    const cells = c.fd.map(v=>{
+      const p=v/mx; const cls=p>=.85?'hot':p>=.55?'warm':p>=.25?'cool':'';
+      return `<td class="${cls}">${v||'&mdash;'}</td>`;
+    }).join('');
+    tr.innerHTML = `<td>${c.name}</td>${cells}<td class="hot" style="font-weight:500">${c.ftotal.toLocaleString()}</td>`;
+    dtB.appendChild(tr);
+  });
+  const totRow = document.createElement('tr');
+  totRow.style.borderTop = '1px solid rgba(46,117,182,.2)';
+  const dayTots = days.map((_,di)=>cats.reduce((s,c)=>s+c.fd[di],0));
+  totRow.innerHTML = `<td style="color:var(--text);font-size:9px;font-weight:500">All Categories</td>`
+    +dayTots.map(v=>`<td style="color:var(--blue-bright);font-weight:500">${v}</td>`).join('')
+    +`<td style="color:#FCA5A5;font-weight:500">${totalCatContacts.toLocaleString()}</td>`;
+  dtB.appendChild(totRow);
+}
+
+// ─── SLIDER ───────────────────────────────────────────────────────────────────
+const sS = document.getElementById('sliderStart');
+const sE = document.getElementById('sliderEnd');
+sS.addEventListener('input', () => {
+  filterStart = Math.min(+sS.value, filterEnd-1);
+  sS.value = filterStart;
+  clearPresets(); renderAll();
+});
+sE.addEventListener('input', () => {
+  filterEnd = Math.max(+sE.value, filterStart+1);
+  sE.value = filterEnd;
+  clearPresets(); renderAll();
+});
+function clearPresets(){document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));}
+function applyPreset(s,e,btn){
+  filterStart=s; filterEnd=e;
+  clearPresets(); if(btn) btn.classList.add('active');
+  renderAll();
+}
+
+// ─── TABS ─────────────────────────────────────────────────────────────────────
+function switchTab(name,btn){
+  document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el=>el.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
+  if(name==='scheduling'){
+    buildTicketTable('invoiceTicketBody', INVOICE_TICKETS);
+    buildTicketTable('schedTicketBody',   SCHED_TICKETS);
+  } else {
+    setTimeout(renderAll,50);
+  }
+}
+
+// ─── ACTIVE TICKETS ───────────────────────────────────────────────────────────
+
+const INVOICE_TICKETS = [
+  {
+    ticket: 'MD-4', url: 'https://varsity.atlassian.net/browse/MD-4',
+    issue: 'Auto-Invoice Does Not Apply Incremental Rate or Milestone Bonuses',
+    contacts14: 812, contactsWk: 373, pct: '10.70%', status: 'Ideas', statusColor: '#6B82A0',
+    examples: [
+      'Feb 25 19:18 — "I have another invoice issue with Taj Davis. 4th session in a row where the incentive is incorrect. Is this ever going to be fixed?"',
+      'Feb 25 19:01 — "Just logged my 5th session with Elija Martinez. It says incentives start on the 5th lesson. I do not see the step increase and I do not see the milestone bonus."',
+      'Feb 25 17:45 — "My base rate is $18.50. I have had two sessions with each student and each time I got $18 only — less than my base rate."',
+      'Feb 25 17:42 — "February 25 at 6:30pm I was only paid $18. February 23 I was paid $23. I have met all eligibility criteria every session, including today."',
+      'Feb 25 16:20 — "I have had 6 sessions with this student and was told after the 5th one the incentive would be applied and it has not."',
+      'Feb 25 16:18 — "My sessions with Hunter have not increased in rate. I have had multiple sessions and the rate is still showing up as $35 but it should have increased."',
+      'Feb 25 15:43 — "I did not receive the correct payment for my student Nate Shurin. The rate did not have the applied incentives like expected."',
+      'Feb 25 15:31 — "I have not been receiving my incentive increases."',
+      'Feb 25 16:30 — "I need an agent to talk with about rate increasement."',
+      'Feb 25 17:03 — "The system did not create an invoice for him on February 23. I had to do it manually, then my pay for him went down to $18."',
+    ]
+  },
+  {
+    ticket: 'MD-9', url: 'https://varsity.atlassian.net/browse/MD-9',
+    issue: 'No-Show Invoice Submission Broken; Bot Misinforms Tutors',
+    contacts14: 563, contactsWk: 273, pct: '7.42%', status: 'Ideas', statusColor: '#6B82A0',
+    examples: [
+      'Feb 25 19:46 — "In the past when students were a no-show we would invoice accordingly. Can we still do that?"',
+      'Feb 25 19:13 — "Unable to create invoice error appears when trying to invoice for Sydney at 8pm. It was a no show."',
+      'Feb 25 19:09 — "Sydney at 8pm on 2/25. Unable to create invoice. Please try again later appears."',
+      'Feb 25 19:01 — "I had a no show for a session but the earnings page showed me as being paid for the session despite the session not happening."',
+      'Feb 25 18:17 — "I tried again to invoice for a no show from yesterday. It is not working."',
+      'Feb 25 14:53 — "I was logged in for my entire session but my Plantation student was a no show. I submitted an invoice but it shows that I only get paid $6.25. Is that correct?"',
+      'Feb 25 14:44 — "I invoiced as no show and the option was unscheduled but the session was scheduled."',
+      'Feb 25 14:21 — "I just had a session with a student who was a no-show. How do I invoice that?"',
+      'Feb 24 16:20 — "My student was a no show. I need to submit a no show invoice but I am unable to create the invoice."',
+      'Feb 23 10:15 — "Student has no showed. Parent has not responded to any messages. I need to submit a no-show invoice."',
+    ]
+  },
+  {
+    ticket: 'MD-7', url: 'https://varsity.atlassian.net/browse/MD-7',
+    issue: 'Session Notes Field Unavailable on Auto-Generated Invoices',
+    contacts14: 542, contactsWk: 240, pct: '7.14%', status: 'Ideas', statusColor: '#6B82A0',
+    examples: [
+      'Feb 25 11:13 — "Why do I have to go to the Invoicing tab? It is like you buried my own notes and you are undervaluing them."',
+      'Feb 25 07:46 — "All sessions say unscheduled and do not allow me to leave notes."',
+      'Feb 24 15:08 — "My session notes for the 17th are not visible either."',
+      'Feb 24 07:05 — "I am trying to enter session notes but I keep getting an error when I attempt to save them."',
+      'Feb 22 16:03 — "Why would a session feedback or AI session notes be locked or not available?"',
+      'Feb 21 10:51 — "Even if the parents request access to the notes, will they see it?"',
+      'Feb 20 10:37 — "What would happen with the notes for those classes? Would the AI session notes be used? Because I have had them use the wrong student name."',
+      'Feb 18 15:48 — "I need to add session notes but there is no field available on the auto-generated invoice."',
+      'Feb 17 11:22 — "Session notes are not accessible since the new invoicing system rolled out. This is a problem for school district documentation."',
+      'Feb 16 09:15 — "The edit option is not integrated yet — confirmed by agent. Notes cannot be added."',
+    ]
+  },
+  {
+    ticket: 'MD-8', url: 'https://varsity.atlassian.net/browse/MD-8',
+    issue: 'Auto-Invoiced Sessions Allow Duplicate Manual Submission via Unscheduled Session Option',
+    contacts14: 156, contactsWk: 51, pct: '2.06%', status: 'Ideas', statusColor: '#6B82A0',
+    examples: [
+      'Feb 25 19:40 — "VT automatically generated an invoice for the session. I also invoiced it as a no show. Now there are two invoices for the same session."',
+      'Feb 25 16:02 — "There are duplicate invoices for Evelyn and I need to invoice the one with her increments on it."',
+      'Feb 25 12:37 — "I have two invoices on the 24th and one should be for the 23rd. The system created a duplicate."',
+      'Feb 25 07:57 — "Two invoices are showing up on the invoice activity panel. Is this a common issue?"',
+      'Feb 24 16:32 — "When I invoice the student the app creates two invoices."',
+      'Feb 24 15:18 — "Receiving daily emails about needing to process invoices is confusing and could result in double invoices."',
+      'Feb 24 12:44 — "The system is creating a ghost invoice, charging for the same session twice. I need to make sure my client is only being charged once."',
+      'Feb 22 11:43 — "I need to speak to a specialist about two incorrect invoices."',
+      'Feb 21 09:22 — "There are two invoices for the same student for the same date. One lists completed and the other lists College and Grad School Academic."',
+      'Feb 21 09:19 — "I was only given the option of unscheduled session, so I completed that. When I went to the invoicing page there was already an invoice created automatically."',
+    ]
+  },
+  {
+    ticket: 'MD-6', url: 'https://varsity.atlassian.net/browse/MD-6',
+    issue: 'Auto-Invoice Records Incorrect Session Duration and Locks Invoice from Editing',
+    contacts14: 152, contactsWk: 51, pct: '2.00%', status: 'Ideas', statusColor: '#6B82A0',
+    examples: [
+      'Feb 25 17:37 — "I cannot change the duration of a session to 30 minutes while editing it. There is no option of 30 minutes in the drop down for duration."',
+      'Feb 22 11:59 — "Inaccuracies on the invoice page. Feb 14 they listed student Benjamin Smilkle for -8 hours and a negative amount. These are wrong."',
+      'Feb 20 13:39 — "One of my sessions pay was calculated by Varsity Tutors but I need to change the time."',
+      'Feb 18 10:26 — "The session date and time are Wednesday Feb 18 at 8:30am. The duration currently shows 0.70 hours but the session was for 1.50 hours."',
+      'Feb 17 19:32 — "It will not let me edit it, as the information that needs to be edited is locked out to me by the system."',
+      'Feb 21 21:42 — "Please correct the billing for my 2/21 session with Sahana Goel. The correct billable time was 2hrs 50min, not 3.17hrs."',
+      'Feb 20 20:32 — "Chester Gregg should only be charged for 1.0hr. The duration is wrong and I cannot edit it."',
+      'Feb 17 12:43 — "The invoice was submitted for the wrong duration. I need help correcting this — I cannot edit it."',
+      'Feb 16 19:30 — "My session was 1 hour but the invoice shows 1 hour and 22 minutes. I cannot edit the invoice to correct it."',
+      'Feb 15 14:52 — "The auto-invoice captured the wrong session length. It is locked and I cannot change the duration."',
+    ]
+  },
+  {
+    ticket: 'MD-5', url: 'https://varsity.atlassian.net/browse/MD-5',
+    issue: 'Auto-Invoice Records Session Date as One Day Prior to Actual Session Date',
+    contacts14: 118, contactsWk: 14, pct: '1.56%', status: 'Ideas', statusColor: '#6B82A0',
+    examples: [
+      'Feb 20 11:26 — "Date on the invoice needs to be changed."',
+      'Feb 18 17:34 — "I held a tutoring session yesterday but the student had a hard time getting in because they had the wrong date. Now the invoice also shows the wrong date."',
+      'Feb 18 16:39 — "VT puts the date in automatically so the student was put in on the wrong date. When I invoiced today VT would not take the invoice because one already existed for that wrong date."',
+      'Feb 18 16:08 — "Last week I added the correct day and time and when I looked back it was for the day before and the day of. I deleted one of them but the date is still wrong."',
+      'Feb 18 07:38 — "The invoice is showing the wrong date. It is showing 2/16/26 but I did not meet my students that day."',
+      'Feb 17 18:18 — "I had the two sessions from yesterday also show up as the wrong date. I had to have a rep fix all of them because it will not let me change the date."',
+      'Feb 17 17:34 — "I can choose the correct date but once I submit the invoice it goes back to the day before."',
+      'Feb 17 17:30 — "Invoicing error — program puts wrong date. Need to speak to a live specialist."',
+      'Feb 16 11:24 — "The invoice date on one of my sessions is showing the day before the actual session date."',
+      'Feb 15 09:42 — "My invoice is showing yesterday as the session date but the session was today."',
+    ]
+  },
+];
+
+const SCHED_TICKETS = [
+  {
+    ticket: 'MD-26', url: 'https://varsity.atlassian.net/browse/MD-26',
+    issue: 'Confirmed Sessions Disappear from Tutor Calendar Without Tutor Action',
+    contacts14: 76, contactsWk: 12, pct: '1.00%', status: 'Ideas', statusColor: '#6B82A0',
+    examples: [
+      'Feb 25 14:05 — "I could not invoice this session because the student name has dropped off my list."',
+      'Feb 25 06:48 — "I accepted them months ago and they disappeared yesterday."',
+      'Feb 22 00:37 — "I noticed my sessions after this week for a student have disappeared."',
+      'Feb 20 16:09 — "A session was scheduled for this evening. I wrote to the student, the session was confirmed. The session magically got changed and confirmed for Saturday evening instead. I am never available on Saturday."',
+      'Feb 20 10:15 — "My client disappeared from my list of clients and schedule."',
+      'Feb 18 15:48 — "My sessions keep disappearing from my calendar before I can invoice them."',
+      'Feb 17 11:22 — "My student has disappeared from my schedule and I am not able to invoice for tutoring I did on Saturday evening."',
+      'Feb 16 15:33 — "My sessions have disappeared from my schedule. How do I get them back?"',
+      'Feb 15 10:44 — "My recurring sessions are gone from my schedule. I did not cancel them."',
+      'Feb 22 16:18 — "When I message the student it says the session is scheduled for tomorrow but I cannot see it on my calendar."',
+    ]
+  },
+  {
+    ticket: 'MD-21', url: 'https://varsity.atlassian.net/browse/MD-21',
+    issue: 'HTTP 409/422/400 Errors When Creating or Scheduling Sessions',
+    contacts14: 69, contactsWk: 32, pct: '0.91%', status: 'Ideas', statusColor: '#6B82A0',
+    examples: [
+      'Feb 25 18:21 — "What does request failed (409) mean?"',
+      'Feb 25 17:06 — "I am not able to change the session — I get an error 409 message."',
+      'Feb 25 11:08 — "I need help on scheduling a session. It always gives me a 422 error."',
+      'Feb 24 18:52 — "This is the error I get when I try to schedule a session with Ella S for 7pm: Request failed (422)."',
+      'Feb 24 16:51 — "I am getting an error 409 when I try to schedule a recurring session. When I attempt the session at 6:30 it changes it automatically to 7:30."',
+      'Feb 24 16:13 — "When I try to schedule it at the time we have been doing and make it recurring, it keeps giving me an error 409."',
+      'Feb 23 22:45 — "I am trying to schedule a student for 6:30pm Wednesday February 25 but the system keeps giving me a Request Failed 409 error."',
+      'Feb 23 18:12 — "Can you add recurring sessions for Roya K to Sundays from 8:30am? This did not work for me — I am getting Request failed (409)."',
+      'Feb 23 11:02 — "I cannot make sessions with any student. Error code 409."',
+      'Feb 22 06:35 — "Everytime I try to schedule my student Pressley, it gives me a 409 error. The error is time specific."',
+    ]
+  },
+  {
+    ticket: 'MD-22', url: 'https://varsity.atlassian.net/browse/MD-22',
+    issue: 'Cancel Session Option Missing from Session Calendar',
+    contacts14: 62, contactsWk: 34, pct: '0.82%', status: 'Ideas', statusColor: '#6B82A0',
+    examples: [
+      'Feb 25 17:32 — "I do not see the option to cancel. I only see the option to join session."',
+      'Feb 25 11:05 — "I see no Remove, Drop, or an icon — trash can or X symbol."',
+      'Feb 25 10:35 — "The system will not let me cancel. I am not getting Edit or Cancel. Please help."',
+      'Feb 25 10:35 — "There is a join session button that is grayed out and not clickable. The 3 dot option button just says trouble joining."',
+      'Feb 25 08:06 — "I need to cancel an appointment but there is no remove option available. Edit button shows an edit screen with no remove option."',
+      'Feb 25 06:26 — "It just says declined. Then it asks Trouble Joining. There is no cancel or remove option."',
+      'Feb 24 17:37 — "Hi, I need to cancel a session but it will not let me."',
+      'Feb 24 15:31 — "I do not see a cancel or remove option. I do not see a place to click edit on the session."',
+      'Feb 24 09:54 — "There is no option for edit or cancel the series — only can not attend and had tech issue options available."',
+      'Feb 24 09:46 — "A student declined a session and I can not remove it from my calendar. There is no cancel or remove option. There is no edit option either."',
+    ]
+  },
+  {
+    ticket: 'MD-23', url: 'https://varsity.atlassian.net/browse/MD-23',
+    issue: 'Session Edit / Reschedule Dropdown Missing or Non-Functional',
+    contacts14: 54, contactsWk: 15, pct: '0.71%', status: 'Ideas', statusColor: '#6B82A0',
+    examples: [
+      'Feb 25 19:29 — "Student would like to join 30 minutes early but it will not let me adjust the start time."',
+      'Feb 25 14:26 — "I can not edit the session to show 6:30 — it is not an option in the times available when editing."',
+      'Feb 25 13:15 — "Hello I can not change time for one of my students."',
+      'Feb 25 09:29 — "She wants me to wait until 10:45 but I was not able to reschedule the VT session."',
+      'Feb 25 05:49 — "The edit option is available but it will not let me modify the session time and it will not save my changes."',
+      'Feb 24 21:00 — "My schedule says a tutoring session was completed but we did not meet today. I cannot remove it."',
+      'Feb 24 07:36 — "I am trying to get the student rescheduled with a tutor that can tutor them when they have free time but I cannot make that change."',
+      'Feb 22 18:04 — "Delete and Cancel session are not available for me to select."',
+      'Feb 22 17:04 — "It says my session already ended when it just began. I cannot seem to join the session and cannot cancel it and reschedule."',
+      'Feb 22 12:51 — "My student cancelled his session. I want another student to take that time but I can not remove the session from my schedule."',
+    ]
+  },
+  {
+    ticket: 'MD-27', url: 'https://varsity.atlassian.net/browse/MD-27',
+    issue: 'Declined Sessions Remain Stuck on Tutor Calendar With No Remove Option',
+    contacts14: 32, contactsWk: 8, pct: '0.42%', status: 'Ideas', statusColor: '#6B82A0',
+    examples: [
+      'Feb 25 19:57 — "Dismiss declined sessions."',
+      'Feb 24 11:10 — "It just lets me click on it and exit, no remove or delete."',
+      'Feb 23 21:11 — "I do not see edit either, just grayed out Join Session and when I click the hamburger dots it just says trouble joining."',
+      'Feb 23 14:44 — "Would like declined sessions to be removed from my schedule."',
+      'Feb 23 12:05 — "Can you remove declined sessions from my schedule? I cannot schedule a new session in that time slot. All I get is a message that asks Trouble joining?"',
+      'Feb 23 10:02 — "Students Adriana Exelby and Jessica Chensee have both declined sessions but are still on my calendar as cancelled. I need to remove them."',
+      'Feb 22 07:37 — "Remove declined sessions from calendar."',
+      'Feb 16 12:10 — "Why can not I dismiss a declined session on my schedule? There is no delete or cancel option."',
+      'Feb 16 10:44 — "I cannot get a session to come off the scheduler. It has been declined but it is stuck and will not let me cancel it."',
+      'Feb 15 09:22 — "A cancelled session is still on my schedule and I would like to remove it. I do not see an option to cancel or remove."',
+    ]
+  },
+  {
+    ticket: 'MD-28', url: 'https://varsity.atlassian.net/browse/MD-28',
+    issue: 'Valid Time Slots Missing from Session Scheduling Dropdown',
+    contacts14: 25, contactsWk: 7, pct: '0.33%', status: 'Ideas', statusColor: '#6B82A0',
+    examples: [
+      'Feb 25 17:37 — "I cannot change the duration of a session to 30 minutes. There is no option of 30 minutes in the drop down for duration."',
+      'Feb 25 09:37 — "The schedule jumps from 4pm to 10pm EST — the session time I need is not available."',
+      'Feb 24 19:25 — "My client asked to reschedule from 4-4:30PM to 4:30-5PM. The calendar will only let me schedule 1 hour sessions, not the 30 minute session I usually do."',
+      'Feb 23 18:11 — "I accidentally canceled a session and it has marked both of us as busy in that time slot. Neither of us can schedule it again."',
+      'Feb 22 09:47 — "I get a message not available for time slots when I am available."',
+      'Feb 22 14:21 — "I would like to reschedule to 3:00 rather than 4:00 but I am unable. The 3:00 slot does not appear."',
+      'Feb 15 09:10 — "I cannot schedule Kaiden at 6:30 PM for 30 minutes every Tuesday. He is already scheduled for Thursdays but Tuesdays are left out."',
+      'Feb 8 13:06 — "There are no overlapping commitments. The time slot is unavailable to click on the calendar or select on the form."',
+      'Feb 8 11:28 — "I want to move my session for Jack Newman to 6:30 EST but I do not have that time slot option — everything except times between 6 and 7."',
+      'Feb 8 08:14 — "My varsity calendar is not allowing me to schedule sessions between 6-8:45 PM. My calendar is free."',
+    ]
+  },
+  {
+    ticket: 'MD-29', url: 'https://varsity.atlassian.net/browse/MD-29',
+    issue: 'Recurring Session Series Cannot Be Created or Modified',
+    contacts14: 18, contactsWk: 4, pct: '0.24%', status: 'Ideas', statusColor: '#6B82A0',
+    examples: [
+      'Feb 25 07:21 — "I need help changing my student Tuesday sessions to a later time for all the sessions starting 3/10. There is no recurring session icon and when I try to edit the series I get a failed message."',
+      'Feb 22 15:05 — "I need to change the time for a recurring session on Sundays with Carly from 5PM to 5:15PM. It will not let me do so."',
+      'Feb 22 12:13 — "I am unable to create recurring meetings with a student — only one-off meetings. It does not allow me to create it as a recurring session. Request failed (500)."',
+      'Feb 22 13:39 — "Add sessions on Monday (recurring) at 1:00pm. It is not working. Failed."',
+      'Feb 15 09:15 — "Hi, can you help me create recurring sessions for Samuel Keller, every Thursday at 4:00 PM PST. I tried doing it but it says failed. Request failed 409."',
+      'Feb 13 14:22 — "I need ongoing schedule for a student starting Monday the 23rd at 6pm CST. Website is giving me 409 — unable to schedule."',
+      'Feb 12 10:03 — "Can you please change sessions from 90 minutes to 30 minutes recurring. It will not let me change it in the system."',
+      'Feb 12 09:15 — "I want to move all sessions with a student to another time. It keeps saying error 404 when I do that."',
+      'Feb 9 11:02 — "I am trying to schedule a recurring session but I get a message: Request failed (409). I have tried scheduling just one session but get the same error."',
+      'Feb 9 10:57 — "I keep getting a 409 request failed notification when I try to schedule a session as a series."',
+    ]
+  },
+];
+
+function buildTicketTable(tbodyId, tickets) {
+  const tbody = document.getElementById(tbodyId);
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  tickets.forEach((t, idx) => {
+    const tr = document.createElement('tr');
+    tr.style.cursor = 'pointer';
+    tr.setAttribute('data-expanded', 'false');
+    tr.setAttribute('data-key', tbodyId + '-' + idx);
+    tr.innerHTML = `
+      <td style="white-space:nowrap">
+        <a href="${t.url}" target="_blank"
+           style="font-family:'DM Mono',monospace;font-size:11px;color:#4B9FE1;text-decoration:none;font-weight:600;
+                  padding:4px 8px;border-radius:4px;background:rgba(75,159,225,.1);
+                  border:1px solid rgba(75,159,225,.3);display:inline-block"
+           onclick="event.stopPropagation()">
+          ${t.ticket} ↗
+        </a>
+      </td>
+      <td style="color:#E8EEF7;font-size:13px;font-weight:500">${t.issue}</td>
+      <td class="num" style="color:#E8EEF7;font-weight:600">${t.contacts14.toLocaleString()}</td>
+      <td class="num" style="color:#E8EEF7">${t.contactsWk.toLocaleString()}</td>
+      <td class="num" style="color:#F59E0B;font-family:'DM Mono',monospace;font-size:11px">${t.pct}</td>
+      <td>
+        <span style="font-family:'DM Mono',monospace;font-size:9px;padding:3px 8px;border-radius:4px;
+                     background:rgba(107,130,160,.15);color:${t.statusColor};border:1px solid rgba(107,130,160,.3)">
+          ${t.status}
+        </span>
+      </td>
+      <td style="font-size:10px;color:#6B82A0">${t.examples[0].substring(0,80)}...</td>
+    `;
+    tr.addEventListener('click', () => toggleTicket(tr, t));
+    tbody.appendChild(tr);
+  });
+}
+
+function toggleTicket(tr, ticket) {
+  const key = tr.getAttribute('data-key');
+  const expanded = tr.getAttribute('data-expanded') === 'true';
+  const existing = document.getElementById('expand-' + key);
+  if (expanded) {
+    if (existing) existing.remove();
+    tr.setAttribute('data-expanded', 'false');
+  } else {
+    tr.setAttribute('data-expanded', 'true');
+    const expandRow = document.createElement('tr');
+    expandRow.id = 'expand-' + key;
+    expandRow.innerHTML = `
+      <td colspan="7" style="padding:0;background:rgba(31,78,121,.12);border-bottom:2px solid rgba(75,159,225,.25)">
+        <div style="padding:16px 20px">
+          <div style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;
+                      color:#4B9FE1;text-transform:uppercase;margin-bottom:12px">
+            ${ticket.ticket} &mdash; ${ticket.issue}
+            &nbsp;&nbsp;
+            <a href="${ticket.url}" target="_blank"
+               style="color:#4B9FE1;text-decoration:underline;font-size:9px">
+              View in Jira &rarr;
+            </a>
+          </div>
+          ${ticket.examples.map((ex, i) => `
+            <div style="display:flex;gap:12px;margin-bottom:10px;padding:10px 14px;
+                        background:rgba(255,255,255,.03);border-radius:6px;
+                        border-left:2px solid rgba(75,159,225,.4)">
+              <span style="font-family:'DM Mono',monospace;font-size:10px;color:#2E75B6;
+                           flex-shrink:0;padding-top:1px">${i+1}.</span>
+              <span style="font-size:12px;color:#A8BCCC;line-height:1.5">${ex}</span>
+            </div>
+          `).join('')}
+          <div style="margin-top:12px;font-family:'DM Mono',monospace;font-size:9px;color:#6B82A0">
+            14-day contacts: ${ticket.contacts14.toLocaleString()} &nbsp;|&nbsp;
+            This week: ${ticket.contactsWk.toLocaleString()} &nbsp;|&nbsp;
+            ${ticket.pct} of all contacts
+          </div>
+        </div>
+      </td>
+    `;
+    tr.parentNode.insertBefore(expandRow, tr.nextSibling);
+  }
+}
+
+buildTicketTable('invoiceTicketBody', INVOICE_TICKETS);
+buildTicketTable('schedTicketBody',   SCHED_TICKETS);
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+renderAll();
+</script>
+</body>
+</html>

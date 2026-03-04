@@ -9,7 +9,7 @@ def push_dashboard_to_github():
     USERNAME = "willkarnavas-dot"
     REPO_URL = f"https://{GH_TOKEN}@github.com/{USERNAME}/vt-tutor-support-dashboard.git"
     REPO_DIR = "/home/claude/vt_dashboard_repo"
-    DASHBOARD_SRC = "/mnt/user-data/outputs/invoicing_trends_dashboard.html"
+    DASHBOARD_SRC = "/mnt/user-data/outputs/tutor_support_contact_reasons.html"
 
     try:
         # Copy latest dashboard
@@ -385,7 +385,7 @@ import subprocess, shutil, os
 GH_TOKEN  = "GITHUB_TOKEN_REMOVED"
 REPO_DIR  = "/home/claude/vt_dashboard_repo"
 REPO_URL  = f"https://{GH_TOKEN}@github.com/willkarnavas-dot/vt-tutor-support-dashboard.git"
-DASHBOARD = "/mnt/user-data/outputs/invoicing_trends_dashboard.html"
+DASHBOARD = "/mnt/user-data/outputs/tutor_support_contact_reasons.html"
 
 try:
     # Ensure repo dir exists and is initialised
